@@ -2,8 +2,9 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-const authorsRouter = require('./routes/authors.js');
-const articlesRouter = require('./routes/articles.js');
+const usersRouter = require('./routes/users');
+const articlesRouter = require('./routes/articles');
+const authRouter = require('./routes/auth');
 
 //load env variables
 dotenv.config();
@@ -37,9 +38,9 @@ mongoose.connect(DB_URL)
 
 
 //set routers
-app.use('/authors', authorsRouter);
+app.use('/users', usersRouter);
 app.use('/articles', articlesRouter);
-
+app.use('/auth', authRouter);
 
 //response to: GET /
 app.get('/', (req, res) => {
